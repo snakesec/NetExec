@@ -14,7 +14,7 @@ sleep 01
 
 source /opt/ANDRAX/PYENV/python3/bin/activate
 
-/opt/ANDRAX/PYENV/python3/bin/pip3 install poetry
+/opt/ANDRAX/PYENV/python3/bin/pip3 install --force-reinstall poetry
 
 if [ $? -eq 0 ]
 then
