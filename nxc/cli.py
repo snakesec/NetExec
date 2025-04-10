@@ -21,7 +21,7 @@ def gen_cli_args():
         VERSION, COMMIT = importlib.metadata.version("netexec").split("+")
         DISTANCE, COMMIT = COMMIT.split(".")
     except ValueError:
-        VERSION = importlib.metadata.version("netexec")
+        VERSION = "1.3.0"
         COMMIT = ""
         DISTANCE = ""
     CODENAME = "NeedForSpeed"

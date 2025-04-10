@@ -1,45 +1,36 @@
 rm -rf /opt/ANDRAX/netexec
 
-cp -Rf config /opt/ANDRAX/.config
+rm -rf /opt/ANDRAX/bin/nxc
+rm -rf /opt/ANDRAX/bin/netexec
+rm -rf /opt/ANDRAX/bin/NetExec
+rm -rf /opt/ANDRAX/bin/nxcdb
 
-rm -rf /opt/ANDRAX/cachevirtual/virtualenvs/*netexec*
+python3 -m venv /opt/ANDRAX/netexec
 
-cp -Rf /opt/ANDRAX/.config /root/
-cp -Rf /opt/ANDRAX/.config /home/andrax/
+source /opt/ANDRAX/netexec/bin/activate
 
-chown -R root:root /root/.config
-chown -R andrax:andrax /home/andrax/.config
-
-sleep 01
-
-source /opt/ANDRAX/PYENV/python3/bin/activate
-
-/opt/ANDRAX/PYENV/python3/bin/pip3 install --force-reinstall poetry
+/opt/ANDRAX/netexec/bin/pip install pyinstaller .
 
 if [ $? -eq 0 ]
 then
   # Result is OK! Just continue...
-  echo "Pip install poetry... PASS!"
+  echo "Pip install local... PASS!"
 else
   # houston we have a problem
   exit 1
 fi
 
-/opt/ANDRAX/PYENV/python3/bin/poetry install
-
-/opt/ANDRAX/PYENV/python3/bin/poetry self add "poetry-dynamic-versioning[plugin]"
-/opt/ANDRAX/PYENV/python3/bin/poetry dynamic-versioning enable
+/opt/ANDRAX/netexec/bin/pyinstaller netexec.spec
 
 if [ $? -eq 0 ]
 then
   # Result is OK! Just continue...
-  echo "Poetry install NetExec... PASS!"
+  echo "Pyinstaller BUILD... PASS!"
 else
   # houston we have a problem
   exit 1
 fi
 
-cp -Rf $(pwd) /opt/ANDRAX/NetExec
+cp -Rf dist/nxc /opt/ANDRAX/bin/
 
-cp -Rf andraxbin/* /opt/ANDRAX/bin
-rm -rf andraxbin
+rm -rf /opt/ANDRAX/netexec/
