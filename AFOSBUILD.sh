@@ -27,6 +27,9 @@ fi
 
 /opt/ANDRAX/PYENV/python3/bin/poetry install
 
+/opt/ANDRAX/PYENV/python3/bin/poetry self add "poetry-dynamic-versioning[plugin]"
+/opt/ANDRAX/PYENV/python3/bin/poetry dynamic-versioning enable
+
 if [ $? -eq 0 ]
 then
   # Result is OK! Just continue...
