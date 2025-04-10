@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo cp -Rf /opt/ANDRAX/.config/ /root/.config/
+sudo cp -Rf /opt/ANDRAX/.config/ /home/andrax/.config/
+
+sudo chown -R root:root /root/.config
+sudo chown -R andrax:andrax /home/andrax/.config/
+
+cd /opt/ANDRAX/NetExec
+
+source /opt/ANDRAX/PYENV/python3/bin/activate
+
+/opt/ANDRAX/PYENV/python3/bin/poetry run nxc "$@"
