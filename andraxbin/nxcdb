@@ -2,4 +2,4 @@
 
 source /opt/ANDRAX/netexec/bin/activate
 
-/opt/ANDRAX/netexec/nxcdb "$@"
+/opt/ANDRAX/netexec/bin/nxcdb "$@"
