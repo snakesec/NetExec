@@ -1,5 +1,1 @@
-#!/bin/bash
-
-source /opt/ANDRAX/netexec/bin/activate
-
-/opt/ANDRAX/netexec/bin/nxcdb "$@"
+/opt/ANDRAX/pipx/venvs/netexec/bin/nxcdb

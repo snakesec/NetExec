@@ -5,16 +5,12 @@ rm -rf /opt/ANDRAX/bin/netexec
 rm -rf /opt/ANDRAX/bin/NetExec
 rm -rf /opt/ANDRAX/bin/nxcdb
 
-python3 -m venv /opt/ANDRAX/netexec
-
-source /opt/ANDRAX/netexec/bin/activate
-
-/opt/ANDRAX/netexec/bin/pip install .
+PIPX_HOME=/opt/ANDRAX/pipx PIPX_BIN_DIR=/opt/ANDRAX/pipx/bin PIPX_MAN_DIR=/opt/ANDRAX/pipx/man /opt/ANDRAX/python3.13/bin/pipx install --force .
 
 if [ $? -eq 0 ]
 then
   # Result is OK! Just continue...
-  echo "Pip install local... PASS!"
+  echo "Force local install... PASS!"
 else
   # houston we have a problem
   exit 1
